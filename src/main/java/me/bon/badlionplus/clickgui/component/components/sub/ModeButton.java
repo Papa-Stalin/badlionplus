@@ -11,6 +11,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 
 import java.awt.Color;
+import me.bon.badlionplus.util.ColorUtils;
 
 public class ModeButton extends Component {
 
