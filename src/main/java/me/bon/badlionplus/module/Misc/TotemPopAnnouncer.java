@@ -16,6 +16,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.server.SPacketEntityStatus;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 
 public class TotemPopAnnouncer extends Module {
 	public TotemPopAnnouncer() {
