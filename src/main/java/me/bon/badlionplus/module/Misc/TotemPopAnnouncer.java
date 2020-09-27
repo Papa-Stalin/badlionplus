@@ -32,11 +32,13 @@ public class TotemPopAnnouncer extends Module {
 	@Override
 	public void onEnable() {
 		BadlionMod.EVENT_BUS.subscribe(this);
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
 	@Override
 	public void onDisable() {
 		BadlionMod.EVENT_BUS.unsubscribe(this);
+		MinecraftForge.EVENT_BUS.unregister(this);
 	}
 	
 	private HashMap<String, Integer> playerList;
