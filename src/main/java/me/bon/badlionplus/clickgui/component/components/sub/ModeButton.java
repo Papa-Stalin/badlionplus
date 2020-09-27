@@ -10,6 +10,8 @@ import me.bon.badlionplus.setting.Setting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 
+import java.awt.Color;
+
 public class ModeButton extends Component {
 
 	private boolean hovered;
