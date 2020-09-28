@@ -79,7 +79,6 @@ public class BadlionMod
     public void onKeyPress(InputEvent.KeyInputEvent event) {
         for (Module m: moduleManager.getModules()) {
             if (Keyboard.isKeyDown(m.getKey())) {
-            	Messages.sendMessagePrefix(event.toString());
                 m.toggle();
             }
         }
