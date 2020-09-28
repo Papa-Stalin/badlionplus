@@ -45,8 +45,13 @@ public class AutoCrystal extends Module {
 		super("AutoCrystal", Category.Combat);
 	}
 	
+	//Credit to Wurst+ 2
+	//This will be rewritten
+	//But for now I need an autocrystal so its gonna have to do
+	
 	Setting placeCA;
 	Setting breakCA;
+	Setting placeDelay;
 	Setting breakAttempts;
 	Setting antiWeakness;
 	Setting breakRange;
@@ -62,7 +67,6 @@ public class AutoCrystal extends Module {
 	Setting newServ;
 	Setting faceplace;
 	Setting faceplaceHealth;
-	Setting faceplaceCheck;
 	Setting render;
 	Setting r;
 	Setting g;
@@ -78,11 +82,11 @@ public class AutoCrystal extends Module {
 		rSetting(antiStuck = new Setting("Anti-Stuck", this, true, "antistuck"));
 		rSetting(newServ = new Setting("1.13+ Mode", this, false, "newServ"));
 		rSetting(faceplace = new Setting("FacePlace Mode", this, false, "faceplace"));
-		rSetting(faceplaceCheck = new Setting("Disable FP w/ Sword", this, true, "faceplacewsword"));
-		rSetting(render = new Setting("Render (BROKEN!!!)", this, false, "brokenrender"));
 		
 		rSetting(placeRange = new Setting("Place Range", this, 8, 1, 9, true, "placerange"));
+		rSetting(placeDelay = new Setting("Place Delay", this, 0, 0, 10, true, "caplacedelay"));
 		rSetting(breakRange = new Setting("Break Range", this, 8, 1, 9, true, "breakrange"));
+		rSetting(breakDelay = new Setting("Break Delay", this, 1, 0, 10, true, "cabreakdelay"));
 		rSetting(wallRange = new Setting("Wall Range", this, 6, 1, 6, true, "wallrange"));
 		rSetting(minDamagePlace = new Setting("Min Damage Place", this, 8, 0, 20, true, "dmgplace"));
 		rSetting(minDamageBreak = new Setting("Min Damage Break", this, 6, 0, 20, true, "dmgbreak"));
@@ -128,8 +132,8 @@ public class AutoCrystal extends Module {
     public void onEnable() {
     	MinecraftForge.EVENT_BUS.register(this);
     	BadlionMod.EVENT_BUS.subscribe(this);
-    	placeTimeout = 10;
-        breakTimeout = 10;
+    	placeTimeout = placeDelay.getValInt();
+        breakTimeout = breakDelay.getValInt();
         placeTimeoutFlag = false;
         isRotating = false;
         autoEzTarget = null;
@@ -251,7 +255,7 @@ public class AutoCrystal extends Module {
 
                 if (target.isDead || target.getHealth() <= 0) continue;
 
-                boolean no_place = faceplaceCheck.getValBoolean() && mc.player.getHeldItemMainhand().getItem() == Items.DIAMOND_SWORD;
+                boolean no_place = false;
                 if ((target.getHealth() < faceplaceHealth.getValInt() && faceplace.getValBoolean() && !no_place) || !no_place) {
                     minimum_damage = 2;
                 } else {

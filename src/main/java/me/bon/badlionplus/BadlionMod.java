@@ -12,6 +12,7 @@ import me.bon.badlionplus.module.ModuleManager;
 import me.bon.badlionplus.module.Combat.Criticals;
 import me.bon.badlionplus.setting.SettingsManager;
 import me.bon.badlionplus.util.ConfigManager;
+import me.bon.badlionplus.util.Messages;
 import me.bon.badlionplus.util.Font.CFontRenderer;
 import me.zero.alpine.EventBus;
 import me.zero.alpine.EventManager;
@@ -78,6 +79,7 @@ public class BadlionMod
     public void onKeyPress(InputEvent.KeyInputEvent event) {
         for (Module m: moduleManager.getModules()) {
             if (Keyboard.isKeyDown(m.getKey())) {
+            	Messages.sendMessagePrefix(event.toString());
                 m.toggle();
             }
         }

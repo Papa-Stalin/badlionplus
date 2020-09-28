@@ -5,8 +5,6 @@ import org.lwjgl.input.Keyboard;
 import me.bon.badlionplus.BadlionMod;
 import me.bon.badlionplus.event.Events.RenderEvent;
 import me.bon.badlionplus.setting.Setting;
-import me.bon.badlionplus.util.Messages;
-
 import static me.bon.badlionplus.BadlionMod.settingsManager;
 
 import net.minecraft.client.Minecraft;
@@ -47,7 +45,7 @@ public class Module {
     }
 
     @SubscribeEvent
-    public void gameTickEvent(TickEvent event) {
+    public void onTick(TickEvent.ClientTickEvent event) {
         if (this.isToggled()) {
             onUpdate();
             this.tickDelay++;

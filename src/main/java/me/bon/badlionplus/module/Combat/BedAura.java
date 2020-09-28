@@ -371,7 +371,6 @@ public class BedAura extends Module {
         EnumFacing opposite = side.getOpposite();
         Vec3d hitVec = new Vec3d(neighbour).add(0.5, 0.5, 0.5).add(new Vec3d(opposite.getDirectionVec()).scale(0.5));
         mc.playerController.processRightClickBlock(mc.player, mc.world, neighbour, opposite, hitVec, EnumHand.MAIN_HAND);
-        mc.player.swingArm(EnumHand.MAIN_HAND);
     }
     
     public static boolean isLiving(Entity e) {

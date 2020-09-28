@@ -56,13 +56,13 @@ public class Strafe extends Module {
                 float f = (float)Math.toRadians(yaw);
                 if(jump.getValBoolean()) {
                     mc.player.motionY = 0.405;
-                    mc.player.motionX -= (double) (MathHelper.sin(f) * 0.0152f) * forward;
-                    mc.player.motionZ += (double) (MathHelper.cos(f) * 0.0152f) * forward;
+                    mc.player.motionX -= (double) (MathHelper.sin(f) * 0.025f) * forward;
+                    mc.player.motionZ += (double) (MathHelper.cos(f) * 0.025f) * forward;
                 } else {
-                    if(mc.gameSettings.keyBindJump.isPressed()){
+                    if(mc.gameSettings.keyBindJump.isPressed() && !jump.getValBoolean()){
                         mc.player.motionY = 0.405;
-                        mc.player.motionX -= (double) (MathHelper.sin(f) * 0.0685f) * forward;
-                        mc.player.motionZ += (double) (MathHelper.cos(f) * 0.0685f) * forward;
+                        mc.player.motionX -= (double) (MathHelper.sin(f) * 0.025f) * forward;
+                        mc.player.motionZ += (double) (MathHelper.cos(f) * 0.025f) * forward;
                     }
                 }
             } else {
