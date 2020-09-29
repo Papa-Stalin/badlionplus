@@ -16,6 +16,8 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 public class Module {
     protected Minecraft mc = Minecraft.getMinecraft();
 
+    public boolean keyActive = false;
+
     private String name, displayName;
     private Category category;
     private boolean toggled;
@@ -46,6 +48,7 @@ public class Module {
 
     @SubscribeEvent
     public void onTick(TickEvent.ClientTickEvent event) {
+        ModuleManager.updateKeys();
         if (this.isToggled()) {
             onUpdate();
             this.tickDelay++;
