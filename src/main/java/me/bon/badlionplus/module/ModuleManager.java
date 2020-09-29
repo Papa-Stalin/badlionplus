@@ -3,6 +3,9 @@ package me.bon.badlionplus.module;
 import java.util.ArrayList;
 
 import me.bon.badlionplus.module.Combat.*;
+import me.bon.badlionplus.module.Misc.RpcModule;
+import me.bon.badlionplus.module.Movement.*;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import me.bon.badlionplus.event.Events.RenderEvent;
@@ -13,10 +16,6 @@ import me.bon.badlionplus.module.Hud.ClickGUI;
 import me.bon.badlionplus.module.Misc.ChatSuffix;
 import me.bon.badlionplus.module.Misc.FakePlayer;
 import me.bon.badlionplus.module.Misc.TotemPopAnnouncer;
-import me.bon.badlionplus.module.Movement.GuiMove;
-import me.bon.badlionplus.module.Movement.Sprint;
-import me.bon.badlionplus.module.Movement.Strafe;
-import me.bon.badlionplus.module.Movement.Velocity;
 import me.bon.badlionplus.module.Player.NoFall;
 import me.bon.badlionplus.module.Player.PacketMine;
 import me.bon.badlionplus.module.Render.Fullbright;
@@ -83,7 +82,30 @@ public class ModuleManager {
                 (entity.posZ - entity.lastTickPosZ) * z
         );
     }
-    
+
+    public static void updateKeys()
+    {
+        if (Minecraft.getMinecraft().currentScreen == null)
+        {
+            for (Module m : modules)
+            {
+                try
+                {
+                    if (Keyboard.isKeyDown(m.getKey()) && !m.keyActive)
+                    {
+                        m.keyActive = true;
+                        m.toggle();
+                    } else if (!Keyboard.isKeyDown(m.getKey()))
+                    {
+                        m.keyActive = false;
+                    }
+                } catch (Exception ignored) {
+                    System.out.println("qwaeszrdxtfcygvuhbijnokmpl,[;.]'/");
+                }
+            }
+        }
+    }
+
     public static Vec3d getInterpolatedAmount(Entity entity, double ticks) {
         return getInterpolatedAmount(entity, ticks, ticks, ticks);
     }

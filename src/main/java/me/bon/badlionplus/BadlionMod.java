@@ -75,14 +75,7 @@ public class BadlionMod
     	MinecraftForge.EVENT_BUS.register(this);
     }
     
-    @SubscribeEvent
-    public void onKeyPress(InputEvent.KeyInputEvent event) {
-        for (Module m: moduleManager.getModules()) {
-            if (Keyboard.isKeyDown(m.getKey())) {
-                m.toggle();
-            }
-        }
-    }
+
 
     
 }
