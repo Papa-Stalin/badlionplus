@@ -51,9 +51,11 @@ public class ModuleManager {
     	modules.add(new ClickGUI());
     	//Misc
     	modules.add(new ChatSuffix());
+        modules.add(new RpcModule());
     	modules.add(new FakePlayer());
     	modules.add(new TotemPopAnnouncer());
     	//Movement
+        modules.add(new Anchor());
     	modules.add(new GuiMove());
     	modules.add(new Sprint());
     	modules.add(new Strafe());
