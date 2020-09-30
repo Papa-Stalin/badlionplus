@@ -18,8 +18,6 @@ public class Offhand extends Module {
     public Setting stopInGUI;
     public Setting swordGap;
     public Setting soft;
-
-    public Setting delay;
     public Setting minHealth;
 
     public Setting mode;
@@ -40,29 +38,12 @@ public class Offhand extends Module {
         rSetting(swordGap = new Setting("Sword Gap", this, true, "swordGap"));
         rSetting(soft = new Setting("Soft", this, false, "soft"));
         rSetting(minHealth = new Setting("Min Health", this, 16.0, 0.0, 36.0, false, ""));
-        rSetting(delay = new Setting("Delay", this, 1.0, 0.0, 20.0, true, ""));
         rSetting(mode = new Setting("Offhand Mode", this, "Crystal", modes, "mode"));
-    }
-
-    int ticksWaited = 0;
-    boolean firstRun = true;
-
-    @Override public void onEnable() {
-        firstRun = true;
-        ticksWaited = 0;
     }
 
     @Override public void onUpdate() {
         if (mc.player == null || mc.world == null) return;
         if (stopInGUI.getValBoolean() && mc.currentScreen != null) return;
-        if (soft.getValBoolean() && (mc.player.getHeldItemOffhand() != null || !(mc.player.getHeldItemOffhand().getItem() == Items.AIR))) return;
-
-        if (!firstRun && ticksWaited <= delay.getValDouble()) {
-            ticksWaited++;
-            return;
-        }
-
-        if (firstRun) firstRun = false;
 
         int itemSlot = getItemSlot();
         if (itemSlot == -1) return;
@@ -93,7 +74,8 @@ public class Offhand extends Module {
             }
         }
 
-        if (itemToSearch == mc.player.getHeldItemOffhand().getItem()) return -1;
+        if (mc.player.inventory.getStackInSlot(45).getItem() == itemToSearch)
+            return -1;
 
         for (int i = 9; i < 36; i++) {
             if (mc.player.inventory.getStackInSlot(i).getItem() == itemToSearch) {
