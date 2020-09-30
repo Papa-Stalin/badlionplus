@@ -42,8 +42,8 @@ public class Module {
     }
 
     public void onDisable() {
-    	MinecraftForge.EVENT_BUS.unregister(this);
     	this.tickDelay = 0;
+    	MinecraftForge.EVENT_BUS.unregister(this);
     }
 
     @SubscribeEvent

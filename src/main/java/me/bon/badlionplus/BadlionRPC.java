@@ -33,15 +33,15 @@ public class BadlionRPC {
                     details = "Version " + BadlionMod.VERSION;
                     state = "";
                     if (mc.isIntegratedServerRunning()) {
-                        state = "playing singleplayer idk why";
+                        state = "Playing Singleplayer";
                     }
                     else if (mc.getCurrentServerData() != null) {
                         if (!mc.getCurrentServerData().serverIP.equals("")) {
-                                    state = "vibin on " + mc.getCurrentServerData().serverIP;
+                                    state = "Owning " + mc.getCurrentServerData().serverIP + " nether 0 0";
                                 }
 
                     } else {
-                            state = "main menu";
+                            state = "Main Menu";
                     }
                     if (!details.equals(presence.details) || !state.equals(presence.state)) {
                         presence.startTimestamp = System.currentTimeMillis() / 1000L;

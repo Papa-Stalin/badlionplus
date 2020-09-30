@@ -33,6 +33,7 @@ public class ModuleManager {
     public ModuleManager() {
     	//Combat
     	modules.add(new AutoCrystal());
+    	modules.add(new AutoTNTCart());
     	modules.add(new AutoTotem());
     	modules.add(new Offhand());
     	modules.add(new AutoTrap());

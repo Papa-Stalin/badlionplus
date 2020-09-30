@@ -51,7 +51,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class BedAura extends Module {
 	public BedAura() {
-		super("BedAura", Category.Combat);
+		super("ECME BedAura", Category.Combat);
 	}
 
 	Setting range;

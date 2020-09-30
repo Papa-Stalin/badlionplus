@@ -110,11 +110,11 @@ public class AutoTrapBed extends Module {
 			target = new BlockPos(closestTarget.getPositionVector().add(0, 3, 0));
 
 		
-		if(tickDelay == 25) {
+		if(tickDelay == 2) {
 			placeBlock(target, EnumFacing.DOWN);
 		}
 		
-		if(tickDelay == 40) {
+		if(tickDelay == 3) {
 			this.toggle();
 		}
 		}
