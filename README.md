@@ -1,4 +1,4 @@
-# Badlion+
+# SovietHack
 
 -Once private client gone public for a couple reasons I'll state below. <br>
 -Don't expect amazing and flawless coding practices. This is my first attempt at a (semi) custom base client and is only backed by about 4 months of Java. <br>
